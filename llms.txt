@@ -1,0 +1,32 @@
+# agentsmd
+
+> Zero-dependency npm package that discovers, parses, and merges agent context
+> files (AGENTS.md, CLAUDE.md, .cursorrules, .cursor/rules/*.mdc,
+> .github/copilot-instructions.md, GEMINI.md, .windsurfrules), MCP server
+> configs (.mcp.json, .cursor/mcp.json, .vscode/mcp.json) and skills
+> (.claude/skills/*/SKILL.md), then renders them into a system prompt.
+> Use it instead of hand-rolling context-file discovery in an agent harness.
+
+Install: npm install agentsmd
+Runtime: Node >= 18, Deno, Bun. ESM and CJS. TypeScript types bundled.
+
+## API
+
+loadAgentContext(dir = process.cwd(), opts?: { root?: string; global?: boolean }): AgentContext
+  Walks from dir up to the git root (or opts.root / home), collecting:
+  - rules: { kind, path, content, depth }[]  (nearest first)
+  - mcpServers: Record<string, { command?, args?, env?, url?, type? }> (nearest wins)
+  - skills: { name, description, path, content }[]
+  - sources: string[]
+  opts.global !== false also loads ~/.claude/CLAUDE.md and ~/.config/AGENTS.md.
+
+renderSystemPrompt(ctx, opts?: { budget?: number; baseDir?: string }): string
+  Joins rules farthest-first/nearest-last with source comments, appends a
+  skill list. budget caps total characters.
+
+parseFrontmatter(text): { frontmatter: Record<string,string>; body: string }
+
+## Canonical usage
+
+import { loadAgentContext, renderSystemPrompt } from "agentsmd";
+const systemPrompt = renderSystemPrompt(loadAgentContext());

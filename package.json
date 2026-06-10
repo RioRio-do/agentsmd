@@ -1,0 +1,47 @@
+{
+  "name": "agentsmd",
+  "version": "0.1.0",
+  "description": "Load AGENTS.md, CLAUDE.md, .cursorrules, MCP configs and skills with one call. Zero dependencies. The context loader for DIY agent harnesses.",
+  "keywords": [
+    "agents.md",
+    "claude.md",
+    "cursorrules",
+    "mcp",
+    "agent",
+    "harness",
+    "llm",
+    "context",
+    "system-prompt",
+    "ai"
+  ],
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist",
+    "llms.txt"
+  ],
+  "sideEffects": false,
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --format esm,cjs --dts --clean",
+    "test": "npm run build && node --test test/*.test.js",
+    "prepublishOnly": "npm test"
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.2",
+    "tsup": "^8.0.0",
+    "typescript": "^5.4.0"
+  }
+}
