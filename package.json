@@ -1,5 +1,5 @@
 {
-  "name": "agentsmd",
+  "name": "harness-context",
   "version": "0.1.0",
   "description": "Load AGENTS.md, CLAUDE.md, .cursorrules, MCP configs and skills with one call. Zero dependencies. The context loader for DIY agent harnesses.",
   "keywords": [
@@ -17,10 +17,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/RioRio-do/agentsmd.git"
+    "url": "git+https://github.com/RioRio-do/harness-context.git"
   },
-  "homepage": "https://github.com/RioRio-do/agentsmd#readme",
-  "bugs": "https://github.com/RioRio-do/agentsmd/issues",
+  "homepage": "https://github.com/RioRio-do/harness-context#readme",
+  "bugs": "https://github.com/RioRio-do/harness-context/issues",
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",

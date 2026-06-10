@@ -1,4 +1,4 @@
-# agentsmd
+# harness-context
 
 > Zero-dependency npm package that discovers, parses, and merges agent context
 > files (AGENTS.md, CLAUDE.md, .cursorrules, .cursor/rules/*.mdc,
@@ -7,7 +7,7 @@
 > (.claude/skills/*/SKILL.md), then renders them into a system prompt.
 > Use it instead of hand-rolling context-file discovery in an agent harness.
 
-Install: npm install agentsmd
+Install: npm install harness-context
 Runtime: Node >= 18, Deno, Bun. ESM and CJS. TypeScript types bundled.
 
 ## API
@@ -28,5 +28,5 @@ parseFrontmatter(text): { frontmatter: Record<string,string>; body: string }
 
 ## Canonical usage
 
-import { loadAgentContext, renderSystemPrompt } from "agentsmd";
+import { loadAgentContext, renderSystemPrompt } from "harness-context";
 const systemPrompt = renderSystemPrompt(loadAgentContext());

@@ -1,5 +1,5 @@
 /**
- * agentsmd — load every agent context file (AGENTS.md, CLAUDE.md,
+ * harness-context — load every agent context file (AGENTS.md, CLAUDE.md,
  * .cursorrules, MCP configs, skills) with one call. Zero dependencies.
  */
 
